@@ -1,0 +1,3 @@
+rootProject.name = 'translation'
+
+include 'translation-common', 'translation-paper', 'translation-velocity'
