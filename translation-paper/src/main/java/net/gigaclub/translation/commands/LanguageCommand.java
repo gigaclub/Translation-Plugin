@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class LanguageCommand implements CommandExecutor {
@@ -25,33 +26,27 @@ public class LanguageCommand implements CommandExecutor {
                     if (args.length > 1) {
                         if (Main.getData().checkIfLanguageExists(args[1])) {
                             Main.getData().setLanguage(playerUUID, args[1]);
-                            ArrayList<String> parameters = new ArrayList<>();
-                            parameters.add(args[1]);
-                            sender.sendMessage(t.t("translation.command.language.set", parameters, playerUUID));
+                            sender.sendMessage(t.t("translation.command.language.set", playerUUID, Arrays.asList(args[1])));
                         } else {
-                            ArrayList<String> parameters = new ArrayList<>();
-                            parameters.add(args[1]);
-                            sender.sendMessage(t.t("translation.command.language.does.not.exist", parameters, playerUUID));
+                            sender.sendMessage(t.t("translation.command.language.does.not.exist", playerUUID, Arrays.asList(args[1])));
                         }
                     } else {
-                        sender.sendMessage(t.t("translation.command.language.no.language.parameter", new ArrayList<>(), playerUUID));
+                        sender.sendMessage(t.t("translation.command.language.no.language.parameter", playerUUID));
                     }
                     break;
                 case "list":
                     //Todo: improve after this issue is solved: https://github.com/gigaclub/TranslationAPI/issues/3
-                    sender.sendMessage(t.t("translation.command.language.list", new ArrayList<>(), playerUUID));
+                    sender.sendMessage(t.t("translation.command.language.list", playerUUID));
                     for (HashMap<Object, Object> language : Main.getData().getAvailableLanguages()) {
                         sender.sendMessage((String) language.get("name"));
                     }
                     break;
                 default:
-                    ArrayList<String> parameters = new ArrayList<>();
-                    parameters.add(args[0]);
-                    sender.sendMessage(t.t("translation.command.language.incorrect.parameter", parameters, playerUUID));
+                    sender.sendMessage(t.t("translation.command.language.incorrect.parameter", playerUUID, Arrays.asList(args[0])));
                     break;
             }
         } else {
-            sender.sendMessage(t.t("translation.command.language.no.parameters", new ArrayList<>(), playerUUID));
+            sender.sendMessage(t.t("translation.command.language.no.parameters", playerUUID));
         }
         return true;
     }

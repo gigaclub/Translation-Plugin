@@ -1,6 +1,7 @@
 package net.gigaclub.translation.data;
 
 import net.gigaclub.base.odoo.Odoo;
+import org.apache.xmlrpc.XmlRpcException;
 
 import java.util.*;
 
@@ -31,7 +32,14 @@ public class Data {
     }
 
     public void setLanguage(String playerUUID, String language) {
-
+        try {
+            this.odoo.getModels().execute("execute_kw", Arrays.asList(
+                    this.odoo.getDatabase(), this.odoo.getUid(), this.odoo.getPassword(),
+                    "gc.user", "set_language", Arrays.asList(playerUUID, language)
+            ));
+        } catch (XmlRpcException e) {
+            e.printStackTrace();
+        }
     }
 
 }

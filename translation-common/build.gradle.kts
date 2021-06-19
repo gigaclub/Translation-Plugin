@@ -12,12 +12,12 @@ repositories {
         }
         credentials {
             username = System.getenv("GITHUB_PACKAGES_USERID") ?: "kevtvkevin"
-            password = System.getenv("GITHUB_PACKAGES_IMPORT_TOKEN") ?: "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"
+            password = System.getenv("GITHUB_PACKAGES_IMPORT_TOKEN") ?: "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"
         }
     }
 }
 
 dependencies {
     api("org.apache.xmlrpc:xmlrpc-client:3.1.3")
-    api("net.gigaclub:translationapi:14.0.1.0.0")
+    api("net.gigaclub:translationapi:14.0.1.0.1")
 }
