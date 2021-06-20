@@ -23,16 +23,12 @@ repositories {
             mavenPom()
             artifact()
         }
-        credentials {
-            username = System.getenv("GITHUB_PACKAGES_USERID") ?: "kevtvkevin"
-            password = System.getenv("GITHUB_PACKAGES_IMPORT_TOKEN") ?: "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"
-        }
     }
 }
 
 dependencies {
     implementation(project(":translation-common"))
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.17-R0.1-SNAPSHOT")
 }
 
 tasks {
