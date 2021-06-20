@@ -2,6 +2,9 @@ plugins {
     `java-library`
 }
 
+val GITHUB_PACKAGES_USERID: String by project
+val GITHUB_PACKAGES_IMPORT_TOKEN: String by project
+
 repositories {
     maven {
         name = "GitHubPackages"
@@ -9,6 +12,10 @@ repositories {
         metadataSources {
             mavenPom()
             artifact()
+        }
+        credentials {
+            username = GITHUB_PACKAGES_USERID
+            password = GITHUB_PACKAGES_IMPORT_TOKEN
         }
     }
 }
