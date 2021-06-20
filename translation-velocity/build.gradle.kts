@@ -26,17 +26,13 @@ repositories {
             mavenPom()
             artifact()
         }
-        credentials {
-            username = System.getenv("GITHUB_PACKAGES_USERID") ?: "kevtvkevin"
-            password = System.getenv("GITHUB_PACKAGES_IMPORT_TOKEN") ?: "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"
-        }
     }
 }
 
 dependencies {
     implementation(project(":translation-common"))
-    compileOnly("com.velocitypowered:velocity-api:1.1.0")
-    annotationProcessor("com.velocitypowered:velocity-api:1.1.0")
+    compileOnly("com.velocitypowered:velocity-api:1.1.8")
+    annotationProcessor("com.velocitypowered:velocity-api:1.1.8")
 }
 
 tasks {
