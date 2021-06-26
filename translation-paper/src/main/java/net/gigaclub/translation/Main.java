@@ -7,6 +7,7 @@ import net.gigaclub.translation.data.Data;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public final class Main extends JavaPlugin {
@@ -35,6 +36,7 @@ public final class Main extends JavaPlugin {
             config.getString("Base.Odoo.Password")
         ));
         registerCommands();
+        registerTranslations();
     }
 
     @Override
@@ -78,6 +80,17 @@ public final class Main extends JavaPlugin {
 
     public void registerCommands() {
         Objects.requireNonNull(getCommand("language")).setExecutor(new LanguageCommand());
+    }
+
+    public static void registerTranslations() {
+        Main.translation.registerTranslations(Arrays.asList(
+                "translation.command.language.set",
+                "translation.command.language.does.not.exist",
+                "translation.command.language.no.language.parameter",
+                "translation.command.language.list",
+                "translation.command.language.incorrect.parameter",
+                "translation.command.language.no.parameters"
+        ));
     }
 
 }
