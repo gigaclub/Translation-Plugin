@@ -21,5 +21,5 @@ repositories {
 }
 
 dependencies {
-    api("net.gigaclub:translationapi:14.0.1.0.3")
+    api("net.gigaclub:translationapi:14.0.1.0.4")
 }

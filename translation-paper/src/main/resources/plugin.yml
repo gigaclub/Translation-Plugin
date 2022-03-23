@@ -1,5 +1,5 @@
 name: Translation
-version: 1.18.2.0.0
+version: 1.18.2.1.0.0
 main: net.gigaclub.translation.Main
 api-version: 1.18
 authors: [ KevTVKevin ]
