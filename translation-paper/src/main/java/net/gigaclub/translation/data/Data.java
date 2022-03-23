@@ -2,6 +2,7 @@ package net.gigaclub.translation.data;
 
 import net.gigaclub.base.odoo.Odoo;
 import org.apache.xmlrpc.XmlRpcException;
+import org.json.JSONArray;
 
 import java.util.*;
 
@@ -23,7 +24,7 @@ public class Data {
         ) > 0;
     }
 
-    public List<HashMap<Object, Object>> getAvailableLanguages() {
+    public JSONArray getAvailableLanguages() {
         return this.odoo.search_read(
                 "gc.language",
                 new ArrayList<>(new ArrayList<>()),

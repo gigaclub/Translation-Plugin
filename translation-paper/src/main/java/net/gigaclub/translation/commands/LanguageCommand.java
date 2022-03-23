@@ -7,10 +7,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static org.bukkit.Bukkit.getLogger;
 
 public class LanguageCommand implements CommandExecutor {
 
@@ -37,8 +41,10 @@ public class LanguageCommand implements CommandExecutor {
                 case "list":
                     //Todo: improve after this issue is solved: https://github.com/gigaclub/TranslationAPI/issues/3
                     sender.sendMessage(t.t("translation.command.language.list", playerUUID));
-                    for (HashMap<Object, Object> language : Main.getData().getAvailableLanguages()) {
-                        sender.sendMessage((String) language.get("name"));
+                    JSONArray languages = Main.getData().getAvailableLanguages();
+                    for (int i = 0; i > languages.length(); i++) {
+                        JSONObject language = languages.getJSONObject(i);
+                        sender.sendMessage(language.optString("name"));
                     }
                     break;
                 default:
