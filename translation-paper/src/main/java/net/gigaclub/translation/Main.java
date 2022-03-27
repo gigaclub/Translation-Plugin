@@ -1,12 +1,13 @@
 package net.gigaclub.translation;
 
 import net.gigaclub.translation.commands.LanguageCommand;
-import net.gigaclub.translation.config.Config;
-import net.gigaclub.translation.config.OdooConfig;
+
 import net.gigaclub.translation.data.Data;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -21,20 +22,23 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         setPlugin(this);
-        setConfig();
-        FileConfiguration config = getConfig();
+
+        
+        File file = new File("plugins//" + "Odoo", "config.yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+
         setTranslation(new Translation(
-            config.getString("Base.Odoo.Host"),
-            config.getString("Base.Odoo.Database"),
-            config.getString("Base.Odoo.Username"),
-            config.getString("Base.Odoo.Password")
+            config.getString("Odoo.Host"),
+            config.getString("Odoo.Database"),
+            config.getString("Odoo.Username"),
+            config.getString("Odoo.Password")
         ));
         translation.setCategory("translation");
         setData(new Data(
-            config.getString("Base.Odoo.Host"),
-            config.getString("Base.Odoo.Database"),
-            config.getString("Base.Odoo.Username"),
-            config.getString("Base.Odoo.Password")
+            config.getString("Odoo.Host"),
+            config.getString("Odoo.Database"),
+            config.getString("Odoo.Username"),
+            config.getString("Odoo.Password")
         ));
         registerCommands();
         registerTranslations();
@@ -67,16 +71,6 @@ public final class Main extends JavaPlugin {
 
     public static void setData(Data data) {
         Main.data = data;
-    }
-
-    private void setConfig() {
-        Config.createConfig();
-
-        OdooConfig.setOdooConfig();
-
-        Config.save();
-
-        getLogger().info(PREFIX + "Config files set.");
     }
 
     public void registerCommands() {
