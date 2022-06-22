@@ -26,17 +26,17 @@ public class LanguageCommand implements CommandExecutor {
                     if (args.length > 1) {
                         if (Main.getData().checkIfLanguageExists(args[1])) {
                             Main.getData().setLanguage(playerUUID, args[1]);
-                            sender.sendMessage(t.t("translation.command.language.set", playerUUID, Arrays.asList(args[1])));
+                            t.sendMessage("translation.command.language.set", player, Arrays.asList(args[1]));
                         } else {
-                            sender.sendMessage(t.t("translation.command.language.does.not.exist", playerUUID, Arrays.asList(args[1])));
+                            t.sendMessage("translation.command.language.does.not.exist", player, Arrays.asList(args[1]));
                         }
                     } else {
-                        sender.sendMessage(t.t("translation.command.language.no.language.parameter", playerUUID));
+                        t.sendMessage("translation.command.language.no.language.parameter", player);
                     }
                     break;
                 case "list":
                     //Todo: improve after this issue is solved: https://github.com/gigaclub/TranslationAPI/issues/3
-                    sender.sendMessage(t.t("translation.command.language.list", playerUUID));
+                    t.sendMessage("translation.command.language.list", player);
                     JSONArray languages = Main.getData().getAvailableLanguages();
                     for (int i = 0; i < languages.length(); i++) {
                         JSONObject language = languages.getJSONObject(i);
@@ -44,11 +44,11 @@ public class LanguageCommand implements CommandExecutor {
                     }
                     break;
                 default:
-                    sender.sendMessage(t.t("translation.command.language.incorrect.parameter", playerUUID, Arrays.asList(args[0])));
+                    t.sendMessage("translation.command.language.incorrect.parameter", player, Arrays.asList(args[0]));
                     break;
             }
         } else {
-            sender.sendMessage(t.t("translation.command.language.no.parameters", playerUUID));
+            t.sendMessage("translation.command.language.no.parameters", player);
         }
         return true;
     }

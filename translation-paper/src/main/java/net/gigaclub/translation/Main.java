@@ -31,7 +31,8 @@ public final class Main extends JavaPlugin {
             config.getString("Odoo.Host"),
             config.getString("Odoo.Database"),
             config.getString("Odoo.Username"),
-            config.getString("Odoo.Password")
+            config.getString("Odoo.Password"),
+            getPlugin()
         ));
         translation.setCategory("translation");
         setData(new Data(
