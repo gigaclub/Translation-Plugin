@@ -10,7 +10,9 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class LanguageCommand implements CommandExecutor {
 
@@ -37,10 +39,9 @@ public class LanguageCommand implements CommandExecutor {
                 case "list":
                     //Todo: improve after this issue is solved: https://github.com/gigaclub/TranslationAPI/issues/3
                     t.sendMessage("translation.command.language.list", player);
-                    JSONArray languages = Main.getData().getAvailableLanguages();
-                    for (int i = 0; i < languages.length(); i++) {
-                        JSONObject language = languages.getJSONObject(i);
-                        sender.sendMessage(language.getString("name"));
+                    List<String> languages = Main.getData().getAvailableLanguages();
+                    for (String language : languages) {
+                        sender.sendMessage(language);
                     }
                     break;
                 default:

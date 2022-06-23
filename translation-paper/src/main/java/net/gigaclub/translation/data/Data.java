@@ -5,6 +5,8 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.json.JSONArray;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Data {
     private Odoo odoo;
@@ -24,12 +26,18 @@ public class Data {
         ) > 0;
     }
 
-    public JSONArray getAvailableLanguages() {
-        return this.odoo.search_read(
-                "gc.language",
-                new ArrayList<>(new ArrayList<>()),
-                new HashMap() {{ put("fields", Collections.singletonList("name")); }}
-        );
+    public List getAvailableLanguages() {
+        try {
+            JSONArray o = new JSONArray(this.odoo.getModels().execute("execute_kw", Arrays.asList(
+                    this.odoo.getDatabase(), this.odoo.getUid(), this.odoo.getPassword(),
+                    "res.lang", "get_langs", Arrays.asList()
+                )
+            ));
+            return Stream.of(o).map(o1 -> o1.get(0)).collect(Collectors.toList());
+        } catch (XmlRpcException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
     }
 
     public void setLanguage(String playerUUID, String language) {
