@@ -5,11 +5,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import net.gigaclub.base.odoo.Odoo;
 import org.apache.xmlrpc.XmlRpcException;
-import org.json.JSONArray;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Data {
     private Odoo odoo;
