@@ -51,7 +51,7 @@ public class LanguageCommand implements CommandExecutor {
                     break;
                 default:
                     JsonObject params = new JsonObject();
-                    params.addProperty("language", args[0]);
+                    params.addProperty("wrongParameter", args[0]);
                     values = new JsonObject();
                     values.add("params", params);
                     t.sendMessage("translation.command.language.incorrect.parameter", player, values);
