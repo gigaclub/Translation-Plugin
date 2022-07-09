@@ -11,14 +11,6 @@ val GITHUB_PACKAGES_IMPORT_TOKEN: String by project
 
 repositories {
     maven {
-        name = "papermc-repo"
-        url = uri("https://papermc.io/repo/repository/maven-public/")
-    }
-    maven {
-        name = "sonatype"
-        url = uri("https://oss.sonatype.org/content/groups/public/")
-    }
-    maven {
         name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/gigaclub/translationapi")
         metadataSources {
@@ -29,6 +21,14 @@ repositories {
             username = GITHUB_PACKAGES_USERID
             password = GITHUB_PACKAGES_IMPORT_TOKEN
         }
+    }
+    maven {
+        name = "papermc-repo"
+        url = uri("https://papermc.io/repo/repository/maven-public/")
+    }
+    maven {
+        name = "sonatype"
+        url = uri("https://oss.sonatype.org/content/groups/public/")
     }
 }
 
