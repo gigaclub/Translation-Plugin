@@ -18,8 +18,12 @@ repositories {
             password = GITHUB_PACKAGES_IMPORT_TOKEN
         }
     }
+    maven {
+        name = "papermc-repo"
+        url = uri("https://repo.papermc.io/repository/maven-public/")
+    }
 }
 
 dependencies {
-    api("net.gigaclub:translationapi:14.0.1.0.6")
+    api("net.gigaclub:translationapi:14.0.1.0.7")
 }

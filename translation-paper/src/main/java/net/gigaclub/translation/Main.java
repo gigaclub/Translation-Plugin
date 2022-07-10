@@ -1,7 +1,6 @@
 package net.gigaclub.translation;
 
 import net.gigaclub.translation.commands.LanguageCommand;
-
 import net.gigaclub.translation.data.Data;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -18,31 +17,8 @@ public final class Main extends JavaPlugin {
     private static Data data;
     final public static String PREFIX = "[GC]: ";
 
-    @Override
-    public void onEnable() {
-        // Plugin startup logic
-        setPlugin(this);
-
-        
-        File file = new File("plugins//" + "Odoo", "config.yml");
-        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-
-        setTranslation(new Translation(
-            config.getString("Odoo.Host"),
-            config.getString("Odoo.Database"),
-            config.getString("Odoo.Username"),
-            config.getString("Odoo.Password"),
-            getPlugin()
-        ));
-        translation.setCategory("translation");
-        setData(new Data(
-            config.getString("Odoo.Host"),
-            config.getString("Odoo.Database"),
-            config.getString("Odoo.Username"),
-            config.getString("Odoo.Password")
-        ));
-        registerCommands();
-        registerTranslations();
+    public static Translation getTranslation() {
+        return Main.translation;
     }
 
     @Override
@@ -58,8 +34,31 @@ public final class Main extends JavaPlugin {
         Main.plugin = plugin;
     }
 
-    public static Translation getTranslation() {
-        return translation;
+    @Override
+    public void onEnable() {
+        // Plugin startup logic
+        setPlugin(this);
+
+
+        File file = new File("plugins//" + "Odoo", "config.yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+
+        setTranslation(new Translation(
+                config.getString("Odoo.Host"),
+                config.getString("Odoo.Database"),
+                config.getString("Odoo.Username"),
+                config.getString("Odoo.Password"),
+                getPlugin()
+        ));
+        Main.translation.setCategory("translation");
+        setData(new Data(
+                config.getString("Odoo.Host"),
+                config.getString("Odoo.Database"),
+                config.getString("Odoo.Username"),
+                config.getString("Odoo.Password")
+        ));
+        registerCommands();
+        registerTranslations();
     }
 
     public static void setTranslation(Translation translation) {
