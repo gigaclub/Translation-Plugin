@@ -5,7 +5,6 @@ plugins {
     id("com.github.johnrengelman.shadow")
 }
 
-val spigotPluginsDir: String? by project
 val GITHUB_PACKAGES_USERID: String by project
 val GITHUB_PACKAGES_IMPORT_TOKEN: String by project
 
@@ -24,17 +23,13 @@ repositories {
     }
     maven {
         name = "papermc-repo"
-        url = uri("https://papermc.io/repo/repository/maven-public/")
-    }
-    maven {
-        name = "sonatype"
-        url = uri("https://oss.sonatype.org/content/groups/public/")
+        url = uri("https://repo.papermc.io/repository/maven-public/")
     }
 }
 
 dependencies {
     implementation(project(":translation-common"))
-    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT")
 }
 
 tasks {
