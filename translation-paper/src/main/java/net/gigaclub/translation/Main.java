@@ -2,6 +2,8 @@ package net.gigaclub.translation;
 
 import net.gigaclub.translation.commands.LanguageCommand;
 import net.gigaclub.translation.data.Data;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -74,8 +76,9 @@ public final class Main extends JavaPlugin {
     }
 
     public void registerCommands() {
-        Objects.requireNonNull(getCommand("language")).setExecutor(new LanguageCommand());
-        Objects.requireNonNull(getCommand("language")).setTabCompleter(new LanguageCommand());
+        LanguageCommand languageCommand = new LanguageCommand();
+        Objects.requireNonNull(getCommand("language")).setExecutor(languageCommand);
+        Objects.requireNonNull(getCommand("language")).setTabCompleter(languageCommand);
     }
 
     public static void registerTranslations() {

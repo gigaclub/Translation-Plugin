@@ -25,6 +25,7 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
         Gson gson = new Gson();
         JsonObject values;
 
+
         if (args.length > 0) {
             switch (args[0].toLowerCase()) {
                 case "set":
@@ -69,8 +70,6 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
-
-
 
         if (args.length == 1) {
             List<String> arguments = new ArrayList<>();
