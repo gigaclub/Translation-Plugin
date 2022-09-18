@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LanguageCommand implements CommandExecutor, TabCompleter {
-    List<String> languages = Main.getData().getAvailableLanguages();
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
@@ -24,7 +24,7 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
         Translation t = Main.getTranslation();
         Gson gson = new Gson();
         JsonObject values;
-
+        List<String> languages = Main.getData().getAvailableLanguages();
 
         if (args.length > 0) {
             switch (args[0].toLowerCase()) {
@@ -45,6 +45,7 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
                     }
                     break;
                 case "list":
+                    List<String> languages = Main.getData().getAvailableLanguages();
                     JsonObject languagesList = new JsonObject();
                     languagesList.add("languages", gson.toJsonTree(languages));
                     values = new JsonObject();
@@ -77,7 +78,7 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
             return arguments;
         }else if (args.length == 2) {
             if (args[0].toLowerCase().toString().equals("set")) {
-
+                List<String> languages = Main.getData().getAvailableLanguages();
                 return languages;
             }
         }
