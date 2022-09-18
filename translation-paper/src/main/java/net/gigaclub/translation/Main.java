@@ -2,8 +2,6 @@ package net.gigaclub.translation;
 
 import net.gigaclub.translation.commands.LanguageCommand;
 import net.gigaclub.translation.data.Data;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
