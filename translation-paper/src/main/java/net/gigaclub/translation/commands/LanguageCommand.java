@@ -24,7 +24,6 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
         Translation t = Main.getTranslation();
         Gson gson = new Gson();
         JsonObject values;
-        List<String> languages = Main.getData().getAvailableLanguages();
 
         if (args.length > 0) {
             switch (args[0].toLowerCase()) {
@@ -45,6 +44,7 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
                     }
                     break;
                 case "list":
+                    List<String> languages = Main.getData().getAvailableLanguages();
                     JsonObject languagesList = new JsonObject();
                     languagesList.add("languages", gson.toJsonTree(languages));
                     values = new JsonObject();
