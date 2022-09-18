@@ -75,6 +75,7 @@ public final class Main extends JavaPlugin {
 
     public void registerCommands() {
         Objects.requireNonNull(getCommand("language")).setExecutor(new LanguageCommand());
+        Objects.requireNonNull(getCommand("language")).setTabCompleter(new LanguageCommand());
     }
 
     public static void registerTranslations() {
