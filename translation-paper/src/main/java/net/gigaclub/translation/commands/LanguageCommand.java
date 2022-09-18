@@ -45,7 +45,6 @@ public class LanguageCommand implements CommandExecutor, TabCompleter {
                     }
                     break;
                 case "list":
-                    List<String> languages = Main.getData().getAvailableLanguages();
                     JsonObject languagesList = new JsonObject();
                     languagesList.add("languages", gson.toJsonTree(languages));
                     values = new JsonObject();
